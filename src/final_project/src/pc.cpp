@@ -39,7 +39,6 @@ void push_data()
 void cllbck_tim_50hz(const ros::TimerEvent &event)
 {
     pcku.kirim_perintah(bola_x, bola_y, 50, 5, 5, 5);
-    //  ROS_INFO("bola x %d | bola y %d", bola_x, bola_y);
     push_data();
 }
 
@@ -47,7 +46,6 @@ void cllbck_sub_bola(const final_project::kamera2pc_msg &msg)
 {   
     bola_x = msg.ball_x;
     bola_y = msg.ball_y;
-    // ROS_INFO("bola x %d | bola y %d", bola_x, bola_y);
 }
 
 int main(int argc, char **argv)
@@ -61,8 +59,7 @@ int main(int argc, char **argv)
 
     pub_target = NH.advertise<final_project::pc2motor_posisi_msg>("pc2motor_posisi", 16);
     pub_kecepatan = NH.advertise<final_project::pc2motor_velocity_msg>("pc2motor_velocity", 16);
-    // sub_target = NH.subscribe("pc2motor_posisi", 16, cllbck_target);
-    // sub_kecepatan = NH.subscribe("pc2motor_velocity", 16, cllbck_kecepatan);
+    
     sub_bola = NH.subscribe("bola", 16, cllbck_sub_bola);
 
 

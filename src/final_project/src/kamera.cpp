@@ -21,10 +21,9 @@ int main(int argc, char **argv)
     while(ros::ok())
     {
         Mat frame, frame_resize, frame_hsv,frame_thresh;
-        // cap >> frame;
-        frame = imread("/home/taufik/MyJourney/final_magang/final_project/src/final_project/img/coba.png", IMREAD_COLOR);
-        // imshow( "Frame", frame );
-        // cout << frame.size[0] << endl;
+        
+        frame = imread("/home/taufik/MyJourney/final_magang/final_project/src/final_project/img/coba.png", IMREAD_COLOR); // ganti seusai direktori mutlak
+    
         resize(frame, frame_resize, Size(1200, 800));
         cvtColor(frame_resize, frame_hsv, CV_BGR2HSV);
         inRange(frame_hsv, Scalar(0,9,241), Scalar(68,246,255) ,frame_thresh);
@@ -52,10 +51,6 @@ int main(int argc, char **argv)
 
             }
         }
-
-        // cout << ball_center.x << endl;
-
-        // imshow( "Frame", frame_thresh);
 
         char c=(char)waitKey(25);
         if(c==27)
